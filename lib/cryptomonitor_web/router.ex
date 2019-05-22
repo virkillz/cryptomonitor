@@ -14,6 +14,7 @@ defmodule CryptomonitorWeb.Router do
     plug :accepts, ["json"]
     # Only uncomment line below if you separate front end and back end into different server.
     # plug CORSPlug, origin: ["http://localhost:3000", "http://127.0.0.1:3000"]
+    plug CORSPlug, origin: ["http://cryptomonitor.xyz", "http://165.22.250.213", "http://localhost:4000"]
   end
 
   scope "/", CryptomonitorWeb do
