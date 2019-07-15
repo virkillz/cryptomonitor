@@ -436,9 +436,9 @@ defmodule Cryptomonitor do
   def convert_currency(float, currency, pair) do
     if pair != "btc_usdt" do
         case currency do
-          "USD" -> float * 7000 |> Float.round(2) |> convert_string
-          "THB" -> float * 222445 |> Float.round(2) |> convert_string
-          "EUR" -> float * 6300 |> Float.round(2) |> convert_string
+          "USD" -> float * 10300 |> Float.round(2) |> convert_string
+          "THB" -> float * 318445 |> Float.round(2) |> convert_string
+          "EUR" -> float * 9150 |> Float.round(2) |> convert_string
             _   -> float * 1 |> Float.round(8) |> convert_string
         end
     else
