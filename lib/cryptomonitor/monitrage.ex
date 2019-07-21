@@ -88,6 +88,7 @@ defmodule Monitrage do
          true <- String.contains?(pair, "_"),
          %{highest_bid: highest_bid, lowest_ask: lowest_ask} <- apply(Keyword.get(@supported_exchange, exchange), :best_offer, [pair])
     do
+      # {:ok, %{highest_bid: highest_bid, lowest_ask: lowest_ask, exchange: Atom.to_string(exchange), pair: pair}}
         if highest_bid == ["0.0", "0.0"] or lowest_ask == [nil, "0.0"] do
           {:error, "Pair not supported or failed to fetch"}
         else

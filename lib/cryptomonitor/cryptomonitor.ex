@@ -414,13 +414,13 @@ defmodule Cryptomonitor do
     min_ask = Enum.min_by(all_result, & &1[:float_ask])
 
     %{
-      min_ask: min_ask.float_bid,
-      max_bid: max_bid.float_ask,
+      min_ask: min_ask.float_ask,
+      max_bid: max_bid.float_bid,
       all_result: all_result,
       profit: min_ask.float_ask - max_bid.float_bid,
       lowest_ask: min_ask,
       highest_bid: max_bid,
-      gain: ((min_ask.float_ask - max_bid.float_bid) / min_ask.float_ask) * 100
+      gain: ((max_bid.float_bid - min_ask.float_ask) / min_ask.float_ask) * 100
     }
   end
 
@@ -532,6 +532,11 @@ defmodule Cryptomonitor do
       _ -> %{}
     end
   end
+
+  defp float_parse(nil) do
+    9999999999.99
+  end
+
 
   defp float_parse(string) do
     {float, _} = Float.parse(string)

@@ -7,7 +7,7 @@ defmodule Monitrage.Bitz do
 
 
   def depth(symbol) do
-    case HTTPoison.get(@domain <> "/Market/depth?symbol=#{symbol}") do
+    case HTTPoison.get(@domain <> "/Market/depth?symbol=#{symbol}", [], [timeout: 3_000, recv_timeout: 3_000]) do
       {:ok, %{body: body, status_code: 200}} -> 
         hasil = Jason.decode(body)
             case hasil do
@@ -28,7 +28,7 @@ defmodule Monitrage.Bitz do
       if bids != nil and asks != nil do
           [a,b,c] = List.first(bids)
           [d,e,f] = List.last(asks)
-          %{highest_bid: [d,e], lowest_ask: [a,b]}
+          %{highest_bid: [a,b], lowest_ask: [d,e]}
       else
         %{highest_bid: ["0.0", "0.0"], lowest_ask: [nil, "0.0"]}
       end

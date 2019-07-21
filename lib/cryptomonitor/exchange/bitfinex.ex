@@ -8,7 +8,7 @@ defmodule Monitrage.Bitfinex do
   # btcusd symbol
 
   def fetch_available_coins do
-    case HTTPoison.get(@domain <> "/v1/symbols") do
+    case HTTPoison.get(@domain <> "/v1/symbols", [], [timeout: 3_000, recv_timeout: 3_000]) do
       {:ok, %{body: body, status_code: 200}} ->
         case Jason.decode(body) do
           {:ok, symbols} ->
@@ -56,7 +56,7 @@ defmodule Monitrage.Bitfinex do
   end
 
   def depth(symbol) do
-    case HTTPoison.get(@domain <> "/v1/book/#{symbol}") do
+    case HTTPoison.get(@domain <> "/v1/book/#{symbol}", [], [timeout: 3_000, recv_timeout: 3_000]) do
       {:ok, %{body: body, status_code: 200}} -> Jason.decode(body)
       err -> {:error, "Cannot get depth"}
     end

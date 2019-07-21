@@ -43,7 +43,7 @@ defmodule Monitrage.Kucoin do
   end
 
   def depth(symbol) do
-    case HTTPoison.get(@domain <> "/api/v1/market/orderbook/level2_20?symbol=" <> symbol) do
+    case HTTPoison.get(@domain <> "/api/v1/market/orderbook/level2_20?symbol=" <> symbol, [], [timeout: 3_000, recv_timeout: 3_000]) do
       {:ok, %{body: body, status_code: 200}} -> Jason.decode(body)
       err -> {:error, "Cannot get depth"}
     end

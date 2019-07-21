@@ -7,7 +7,7 @@ defmodule Monitrage.Coinegg do
 
 
   def depth(symbol) do
-    case HTTPoison.get(@domain <> "/depth/region/#{symbol}") do
+    case HTTPoison.get(@domain <> "/depth/region/#{symbol}", [], [timeout: 3_000, recv_timeout: 3_000]) do
       {:ok, %{body: body, status_code: 200}} -> 
         hasil = Jason.decode(body)
             case hasil do

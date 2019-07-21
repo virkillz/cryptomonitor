@@ -7,7 +7,7 @@ defmodule Monitrage.Bitmart do
 
 
   def depth(symbol) do
-    case HTTPoison.get(@domain <> "/symbols/#{symbol}/orders?precision=6") do
+    case HTTPoison.get(@domain <> "/symbols/#{symbol}/orders?precision=6", [], [timeout: 3_000, recv_timeout: 3_000]) do
       {:ok, %{body: body, status_code: 200}} -> 
         hasil = Jason.decode(body)
             case hasil do

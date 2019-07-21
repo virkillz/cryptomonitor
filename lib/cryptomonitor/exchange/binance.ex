@@ -13,7 +13,7 @@ defmodule Monitrage.Binance do
   """
   @impl Monitrage.Exchange
   def fetch_available_coins do
-    case HTTPoison.get(@domain <> "/api/v1/exchangeInfo") do
+    case HTTPoison.get(@domain <> "/api/v1/exchangeInfo", [], [timeout: 3_000, recv_timeout: 3_000]) do
       {:ok, %{body: body, status_code: 200}} ->
         case Jason.decode(body) do
           {:ok, %{"symbols" => symbols}} ->
@@ -45,7 +45,7 @@ defmodule Monitrage.Binance do
   end
 
   def depth(symbol) do
-    case HTTPoison.get(@domain <> "/api/v1/depth?symbol=" <> symbol) do
+    case HTTPoison.get(@domain <> "/api/v1/depth?symbol=" <> symbol, [], [timeout: 3_000, recv_timeout: 3_000]) do
       {:ok, %{body: body, status_code: 200}} ->
         Jason.decode(body)
 

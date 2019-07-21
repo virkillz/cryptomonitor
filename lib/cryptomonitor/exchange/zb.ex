@@ -7,7 +7,7 @@ defmodule Monitrage.Zb do
 
 
   def depth(symbol) do
-    case HTTPoison.get(@domain <> "/depth?market=#{symbol}&size=2") do
+    case HTTPoison.get(@domain <> "/depth?market=#{symbol}&size=2", [], [timeout: 3_000, recv_timeout: 3_000]) do
       {:ok, %{body: body, status_code: 200}} -> 
         hasil = Jason.decode(body)
             case hasil do

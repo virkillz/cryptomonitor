@@ -20,11 +20,11 @@ defmodule CryptomonitorWeb.PageController do
       info = %{
         "coin" => coin_info,
         "detail" => %{
-          "buy_from" => arbit_info.highest_bid.exchange |> String.capitalize(),
-          "sell_to" => arbit_info.lowest_ask.exchange |> String.capitalize(),
+          "buy_from" => arbit_info.lowest_ask.exchange |> String.capitalize(),
+          "sell_to" => arbit_info.highest_bid.exchange |> String.capitalize(),
           "summary" =>
-            "Buy from #{arbit_info.highest_bid.exchange |> String.capitalize()}, Sell at #{
-              arbit_info.lowest_ask.exchange |> String.capitalize()
+            "Buy from #{arbit_info.lowest_ask.exchange |> String.capitalize()}, Sell at #{
+              arbit_info.highest_bid.exchange |> String.capitalize()
             }",
           "deal_percentage" => "#{(arbit_info.gain * 100) |> Float.ceil(2)}",
           "buy_price" => arbit_info.min_ask,
