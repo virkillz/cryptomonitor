@@ -280,7 +280,7 @@ isExchangeEnabled model exchange =
 
 getBestBTC : Cmd Msg
 getBestBTC = Http.get
-      { url = "http://cryptominitor.xyz/api/best?coin=BTC&convertion=USD&exchange[]=binance&exchange[]=coinbene&exchange[]=okex&exchange[]=coineal&exchange[]=tokenomy&exchange[]=bitfinex&exchange[]=indodax&exchange[]=kucoin"
+      { url = "http://cryptomonitor.xyz/api/best?coin=BTC&convertion=USD&exchange[]=binance&exchange[]=coinbene&exchange[]=okex&exchange[]=coineal&exchange[]=tokenomy&exchange[]=bitfinex&exchange[]=indodax&exchange[]=kucoin"
       , expect = Http.expectString GotBestBTC
       }
 
