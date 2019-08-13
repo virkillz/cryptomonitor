@@ -280,14 +280,14 @@ isExchangeEnabled model exchange =
 
 getBestBTC : Cmd Msg
 getBestBTC = Http.get
-      { url = "http://localhost:4000/api/best?coin=BTC&convertion=USD&exchange[]=binance&exchange[]=coinbene&exchange[]=okex&exchange[]=coineal&exchange[]=tokenomy&exchange[]=bitfinex&exchange[]=indodax&exchange[]=kucoin"
+      { url = "http://cryptominitor.xyz/api/best?coin=BTC&convertion=USD&exchange[]=binance&exchange[]=coinbene&exchange[]=okex&exchange[]=coineal&exchange[]=tokenomy&exchange[]=bitfinex&exchange[]=indodax&exchange[]=kucoin"
       , expect = Http.expectString GotBestBTC
       }
 
 
 initResources : Cmd Msg
 initResources = Http.get
-      { url = "http://localhost:4000/api/resources"
+      { url = "http://cryptomonitor.xyz/api/resources"
       , expect = Http.expectString GotResources
       }
 
@@ -298,7 +298,7 @@ getBestPrice coin model =
         conversion = stringifyConversion model
     in
         Http.get
-          { url = "http://localhost:4000/api/best" ++ params ++ conversion
+          { url = "http://cryptomonitor.xyz/api/best" ++ params ++ conversion
           , expect = Http.expectString GotBestPrice
           }
 
