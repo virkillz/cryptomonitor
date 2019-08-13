@@ -814,18 +814,13 @@ viewHeader =
             [ div [ class "slim-header-left" ]
                 [ h2 [ class "slim-logo" ]
                     [ a [ href "index.html" ]
-                        [ text "cryptonitor"
+                        [ text "cryptomonitor"
                         , span []
                             [ text "." ]
                         ]
                     ]
                 , div [ class "search-box" ]
-                    [ input [ class "form-control", placeholder "Search", type_ "text" ]
-                        []
-                    , button [ class "btn btn-primary" ]
-                        [ i [ class "fa fa-search" ]
-                            []
-                        ]
+                    [ 
                     ]
                 ]
             ]
